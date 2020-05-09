@@ -15,6 +15,7 @@
             </form>
 
             <?php
+        
               if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['submit']))
               {
               $student_name = $_POST['student_name'];
@@ -26,9 +27,27 @@
                 "http" => array(
                 "header" => "Authorization: Basic " . base64_encode("$username:$password"),
               )));
+              var_dump($username);
+              var_dump($password);
+	      $ch=curl_init();
+              curl_setopt($ch, CURLOPT_URL,'http://app-service:5000/pozos/api/v1.0/get_student_ages');
+	      curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
+	      curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+              //curl_setopt($curl_handle, CURLOPT_USERAGENT, 'simple_api');
+              $url = curl_exec($ch);
+              if(curl_errno($ch)){
+                 echo curl_error($ch);
+                 echo "\n<br />";
+                 $url= '';
+              }else{ curl_close($ch); }
+              echo $url;
 
-              $url = 'http://<api_ip_or_name:port>/pozos/api/v1.0/get_student_ages';
+	      // curl_close($curl_handle);
+              //var_dump($url);
+              // $url = 'http://192.168.232.132:5000/pozos/api/v1.0/get_student_ages';
               $list = json_decode(file_get_contents($url, false, $context), true);
+	      var_dump($url);
+              var_dump($context);
               echo "<p style='color:red;; font-size: 20px;'>This is the list of the student with age</p>";
               foreach($list["student_ages"] as $key => $value) {
                   echo "- $key are $value years old <br>";

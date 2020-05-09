@@ -1,0 +1,22 @@
+version: "3.7"
+services:
+  website:
+    image: php:apache
+    environment:
+      - USERNAME=toto
+      - PASSWORD=python    
+    volumes:
+      - ./website:/var/www/html
+    ports:
+     - 5000:80
+    depends_on:
+      - app-service
+
+
+  app-service:
+    build:
+     context: simple_api
+     dockerfile: Dockerfile
+    ports:
+     - 5001:5000
+     
