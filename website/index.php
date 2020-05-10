@@ -44,7 +44,7 @@
 
 	      // curl_close($curl_handle);
               //var_dump($url);
-              // $url = 'http://192.168.232.132:5000/pozos/api/v1.0/get_student_ages';
+              // $url = 'http://192.168.232.132:5001/pozos/api/v1.0/get_student_ages';
               $list = json_decode(file_get_contents($url, false, $context), true);
 	      var_dump($url);
               var_dump($context);

@@ -17,6 +17,7 @@ services:
     build:
      context: simple_api
      dockerfile: Dockerfile
+    volumes:
+     - ./simple_api:/usr/src/app
     ports:
      - 5001:5000
-     
