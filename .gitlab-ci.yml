@@ -1,2 +1,3 @@
-docker build -t my-image simple_api/Dockerfile
-docker run my-image /script/to/run/test
+image: docker:latest
+
+

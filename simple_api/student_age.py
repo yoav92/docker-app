@@ -1,4 +1,5 @@
 #!flask/bin/python
+from pprint import pprint
 from flask import Flask, jsonify
 from flask import abort
 from flask import make_response
@@ -13,6 +14,8 @@ import os
 auth = HTTPBasicAuth()
 app = Flask(__name__)
 app.debug = True
+
+
 
 @auth.get_password
 def get_password(username):
