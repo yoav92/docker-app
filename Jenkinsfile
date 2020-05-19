@@ -7,7 +7,7 @@ node{
 }
 
   stage('Build image'){
-    app = docker.build("docker-app")
+    app = docker.build("docker-app","./simple_api")
 }
 
   stage('Run image'){
