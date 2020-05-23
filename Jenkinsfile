@@ -11,11 +11,11 @@ node{
 }
 
   stage('Run image'){
-     docker.image('docker-app').withRun('-p 5000:80') { c ->
+     docker.image('docker-app').withRun('-p 8080:80') { c ->
 
      sh 'docker ps'
    
-     sh 'curl 0.0.0.0:5000'
+     sh 'curl 0.0.0.0:8080'
 
    }
    }
