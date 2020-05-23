@@ -11,7 +11,7 @@ node{
 }
 
   stage('Run image'){
-     docker.image('docker-app').withRun('-p 80:80') { c ->
+     docker.image('docker-app').withRun('-p 5000:80') { c ->
 
      sh 'docker ps'
    
