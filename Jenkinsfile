@@ -15,7 +15,7 @@ node{
 
      sh 'docker ps'
    
-     sh 'curl 127.0.0.1:5000'
+     sh 'curl 0.0.0.0:5000'
 
    }
    }
