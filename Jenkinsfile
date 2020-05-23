@@ -15,7 +15,7 @@ node{
 
      sh 'docker ps'
    
-     sh 'curl 0.0.0.0:8080'
+     sh 'curl -u toto:python -X GET 0.0.0.0:8080/pozos/api/v1.0/get_student_age'
 
    }
    }
