@@ -11,11 +11,11 @@ node{
 }
 
   stage('Run image'){
-     docker.image('docker-app').withRun('-p 8080:80') { c ->
+     docker.image('docker-app').withRun('-p 5001:80') { c ->
 
      sh 'docker ps'
    
-     sh 'curl -u toto:python -X GET http://0.0.0.0:8080/pozos/api/v1.0/get_student_age'
+     sh 'curl -u toto:python -X GET http://localhost:5001/pozos/api/v1.0/get_student_age'
 
    }
    }
