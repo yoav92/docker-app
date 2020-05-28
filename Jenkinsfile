@@ -15,7 +15,7 @@ node{
 
      sh 'docker ps'
    
-     sh 'curl -u toto:<token> -X GET http://0.0.0.0:8080/pozos/api/v1.0/get_student_ages'
+     sh 'curl -u toto:apiToken -X GET http://0.0.0.0:8080/pozos/api/v1.0/get_student_ages'
 
    }
    }
