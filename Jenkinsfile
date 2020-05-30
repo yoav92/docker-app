@@ -15,7 +15,7 @@ node{
 
      sh 'docker ps'
    
-     sh 'curl -u toto:python -X GET http://user:python@192.168.232.140/job/GitTrigger/5/pozos/api/v1.0/get_student_ages'
+     sh 'curl -u toto:python -X GET http://192.168.232.140:8080/pozos/api/v1.0/get_student_ages'
 
    }
    }
