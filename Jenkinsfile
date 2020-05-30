@@ -1,15 +1,16 @@
 
 node{
    def app
+  docker.image('docker').inside('-v /var/run/docker.sock:/var/run/docker.sock') {
 
-   stage('Clone'){
-      checkout scm
-}
+         stage('Clone'){
+            checkout scm
+      }
 
-  stage('Build image'){
-    app = docker.build("docker-app","./simple_api")
-}
-
+        stage('Build image'){
+          app = docker.build("docker-app","./simple_api")
+      }
+  }
   stage('Run image'){
      docker.image('docker-app').withRun('-p 8080:80') { c ->
 
