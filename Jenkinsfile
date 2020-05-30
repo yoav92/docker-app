@@ -22,6 +22,7 @@ node{
    }
       
       stage('docker_scan'){
+      sh 'docker ps'
       sh '''
         docker run -d --name db arminc/clair-db
         sleep 15 # wait for db to come up
