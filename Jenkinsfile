@@ -12,13 +12,7 @@ node{
       }
   
   stage('Run image'){
-     docker.image('docker-app').withRun('-p 8080:80') { c ->
-
-     sh 'docker ps'
-   
-     sh 'curl -u toto:python -X GET http://localhost:8080/pozos/api/v1.0/get_student_ages'
-
-     }
+     docker.image('docker-app').withRun('-p 8080:80') 
    }
       
     docker.image('nordri/clair-scanner').inside('--net ci') {
