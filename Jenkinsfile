@@ -19,9 +19,9 @@ node{
      sh 'curl -u toto:python -X GET http://localhost:8080/pozos/api/v1.0/get_student_ages'
      
      
-     sh 'docker stop 5a6400a9a4b37420504ccb6eadced6a7e152bdcf6930df52ccb2f1cdd904e6ec'
+     sh 'docker stop ed44f725e663cef8ac6377133c6515f57d392233bb6354afbf03df8a7c2cd123'
      
-     sh 'docker rm 5a6400a9a4b37420504ccb6eadced6a7e152bdcf6930df52ccb2f1cdd904e6ec'
+     sh 'docker rm ed44f725e663cef8ac6377133c6515f57d392233bb6354afbf03df8a7c2cd123'
 
         
      sh '''
