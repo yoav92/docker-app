@@ -18,6 +18,8 @@ node{
    stage("docker_scan"){
       sh 'docker stop d3e1d4789c08f1ff0b401a156f8650751f312a878f817be60223addd16ede823'
       sh 'docker rm d3e1d4789c08f1ff0b401a156f8650751f312a878f817be60223addd16ede823'
+       sh 'docker stop 5a6400a9a4b37420504ccb6eadced6a7e152bdcf6930df52ccb2f1cdd904e6ec'
+      sh 'docker rm 5a6400a9a4b37420504ccb6eadced6a7e152bdcf6930df52ccb2f1cdd904e6ec'
       sh '''
         docker run -d --name db arminc/clair-db
         sleep 15 # wait for db to come up
