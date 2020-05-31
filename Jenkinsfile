@@ -23,8 +23,6 @@ node{
       
       stage('docker_scan'){
       sh 'docker ps'
-      sh 'docker stop 8840bdb9c5449eb8c58a43abe5b1dc3015baea5fbd349bc3fcece03d6be84158'
-      sh 'docker rm 8840bdb9c5449eb8c58a43abe5b1dc3015baea5fbd349bc3fcece03d6be84158'
       sh 'docker stop 0b9ea5c1ac7a914b0c5bf185b665f348ddfb09201513d7826fc5c55713c99886'
       sh 'docker rm 0b9ea5c1ac7a914b0c5bf185b665f348ddfb09201513d7826fc5c55713c99886'
       sh '''
