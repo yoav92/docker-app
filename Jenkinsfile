@@ -1,7 +1,7 @@
 
 node{
    def app
- docker.image('docker-app').inside('-v /var/run/docker.sock:/var/run/docker.sock') {
+ docker.image('docker').inside('-v /var/run/docker.sock:/var/run/docker.sock') {
 
          stage('Clone'){
             checkout scm
