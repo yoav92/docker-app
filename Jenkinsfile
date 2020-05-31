@@ -23,6 +23,8 @@ node{
       
       stage('docker_scan'){
       sh 'docker ps'
+      sh 'docker stop 8840bdb9c5449eb8c58a43abe5b1dc3015baea5fbd349bc3fcece03d6be84158'
+      sh 'docker rm 8840bdb9c5449eb8c58a43abe5b1dc3015baea5fbd349bc3fcece03d6be84158'
       sh '''
         docker run -d --name db arminc/clair-db
         sleep 15 # wait for db to come up
