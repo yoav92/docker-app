@@ -1,7 +1,7 @@
 
 node{
    def app
-  
+
 
          stage('Clone'){
             checkout scm
@@ -12,13 +12,13 @@ node{
       }
   
   stage('Run image'){
-     docker.image('docker-app').withRun('-p 8080:80') { c ->
+     docker.image('docker-app').withRun('-p 8080:80') 
 
      sh 'docker ps'
    
      sh 'curl -u toto:python -X GET http://localhost:8080/pozos/api/v1.0/get_student_ages'
 
-   }
+  
    }
       
     docker.image('nordri/clair-scanner').inside('--net ci') {
@@ -26,7 +26,7 @@ node{
        stage ('Security scanner') {
            sh '''
              IP=$(ip r | tail -n1 | awk '{ print $9 }')
-             /clair-scanner --ip ${IP} --clair=http://clair:6060 --threshold="Critical" DOCKER_IMAGE
+             /clair-scanner --ip ${IP} --clair=http://clair:6060 --threshold="Critical" docker-app
            '''
        }
    }
