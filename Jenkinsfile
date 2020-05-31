@@ -12,7 +12,7 @@ node{
       }
   
   stage('Run image'){
-     docker.image('docker-app').withRun('-p 8080:80') 
+     docker.image('docker-app')
    }
       
     docker.image('nordri/clair-scanner').inside('--net ci') {
