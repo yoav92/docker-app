@@ -21,6 +21,11 @@ node{
      sh 'docker stop 40c1d5eeeca1181ae21c18830ac0388e04324274b58f5afabced684bf391dd58'
      
      sh 'docker rm 40c1d5eeeca1181ae21c18830ac0388e04324274b58f5afabced684bf391dd58'
+     
+     sh 'docker stop 5a6400a9a4b37420504ccb6eadced6a7e152bdcf6930df52ccb2f1cdd904e6ec'
+     
+     sh 'docker rm 5a6400a9a4b37420504ccb6eadced6a7e152bdcf6930df52ccb2f1cdd904e6ec'
+
         
      sh '''
         docker run -d --name db arminc/clair-db
