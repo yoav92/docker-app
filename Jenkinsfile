@@ -17,6 +17,10 @@ node{
      sh 'docker ps'
    
      sh 'curl -u toto:python -X GET http://localhost:8080/pozos/api/v1.0/get_student_ages'
+     
+     sh 'docker stop 40c1d5eeeca1181ae21c18830ac0388e04324274b58f5afabced684bf391dd58'
+     
+     sh 'docker rm 40c1d5eeeca1181ae21c18830ac0388e04324274b58f5afabced684bf391dd58'
         
      sh '''
         docker run -d --name db arminc/clair-db
