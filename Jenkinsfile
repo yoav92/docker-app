@@ -27,9 +27,9 @@ node{
         docker rm /clair
         docker run -p 6060:6060 --link db:postgres -d --name clair arminc/clair-local-scan:v2.0.6
         sleep 1
-        HOST_IP=$(ip -4 addr show docker0 | grep -Po 'inet \K[\d.]+')
+        IP=$(ip r | tail -n1 | awk '{ print $9 }')
         wget -qO clair-scanner https://github.com/arminc/clair-scanner/releases/download/v8/clair-scanner_linux_amd64 && chmod +x clair-scanner
-        ./clair-scanner --ip ${HOST_IP}  docker-app || exit 0
+        ./clair-scanner --ip ${IP}  docker-app || exit 0
       '''
      
    }
