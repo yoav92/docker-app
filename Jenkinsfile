@@ -25,7 +25,7 @@ node{
         sleep 15 # wait for db to come up
          docker stop /clair
         docker rm /clair
-        docker run -p 6060:6060 --link db:postgres -d --name clair arminc/clair-local-scan
+        docker run -p 6060:6060 --link db:postgres -d --name clair arminc/clair-local-scan:v2.0.6
         sleep 1
         DOCKER_GATEWAY=$(docker network inspect bridge --format "{{range .IPAM.Config}}{{.Gateway}}{{end}}")
         wget -qO clair-scanner https://github.com/arminc/clair-scanner/releases/download/v8/clair-scanner_linux_amd64 && chmod +x clair-scanner
