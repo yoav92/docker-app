@@ -29,7 +29,7 @@ node{
         sleep 1
         IP=$(ip r | tail -n1 | awk '{ print $9 }')
         wget -qO clair-scanner https://github.com/arminc/clair-scanner/releases/download/v8/clair-scanner_linux_amd64 && chmod +x clair-scanner
-        ./clair-scanner --ip ${IP}  docker-app || exit 0
+        ./clair-scanner --ip ${IP}  IMAGE="docker-app" || exit 0
       '''
      
    }
