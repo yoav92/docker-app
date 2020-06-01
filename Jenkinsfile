@@ -32,7 +32,8 @@ node{
         docker rm /clair
         docker run -p 6060:6060 --link db:postgres -d --name clair arminc/clair-local-scan
         sleep 1
-        clair-scanner --ip localhost:6060 docker-app || exit 0
+        IP=$(ip r | tail -n1 | awk '{ print $9 }')
+             /clair-scanner --ip ${IP} --clair=http://clair:6060 --threshold="Critical" docker-app
       '''
     }
   
