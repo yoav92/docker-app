@@ -24,7 +24,7 @@ node{
   }
   stage("docker_scan"){
       sh '''
-        docker.image('docker-app').withRun('-p 8080:80')
+        
         docker stop /db
         docker rm /db
         docker run -d --name db arminc/clair-db
