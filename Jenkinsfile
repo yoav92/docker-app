@@ -21,7 +21,7 @@ node{
         
         docker stop /db
         docker rm /db
-        docker run -d --name db arminc/clair-db
+        docker run -p 5432:5432 -d --name db arminc/clair-db
         sleep 15 # wait for db to come up
          docker stop /clair
         docker rm /clair
