@@ -24,6 +24,7 @@ node{
   }
   stage("docker_scan"){
       sh '''
+        docker.image('docker-app')
         docker stop /db
         docker rm /db
         docker run -d --name db arminc/clair-db
@@ -34,7 +35,7 @@ node{
         sleep 1
         DOCKER_GATEWAY=$(docker network inspect bridge --format "{{range .IPAM.Config}}{{.Gateway}}{{end}}")
         wget -qO clair-scanner https://github.com/arminc/clair-scanner/releases/download/v8/clair-scanner_linux_amd64 && chmod +x clair-scanner
-        ./clair-scanner --ip="$DOCKER_GATEWAY" myapp:latest || exit 0
+        ./clair-scanner --ip="$DOCKER_GATEWAY" docker-app || exit 0
       '''
     }
   
