@@ -1,35 +1,25 @@
 
-node{
-   def app
+node {
 
-         stage('Clone'){
-            checkout scm
-      }
-
-        stage('Build image'){
-          app = docker.build("docker-app","./simple_api")
-      }
-  
-  stage('Run image'){
-     docker.image('docker-app').withRun('-p 8080:80') { c ->
-
-     sh 'docker ps'
-   
-     sh 'curl -u toto:python -X GET http://localhost:8080/pozos/api/v1.0/get_student_ages'
+   docker.image('docker').inside('-v /var/run/docker.sock:/var/run/docker.sock') {
       
-  }
+       stage ('Checkout') {
+         checkout scm
+       }
 
-  
-}
-   stage("docker_scan"){
-      sh '''
-     git clone https://github.com/Chathuru/clair-scanner.git
-     helm install <RELEASE_NAME> clair
-     wget https://github.com/arminc/clair-scanner/releases/download/v12/clair-scanner_linux_amd64
- 
-mv clair-scanner_linux_amd64 clair-scanner
- chmod +x clair-scanner
-      '''
-     
+       stage ('Build Docker image') {
+           // Build docker image
+           // docker build... DOCKER_IMAGE
+       }
+   }
+
+   docker.image('nordri/clair-scanner').inside('--net ci') {
+
+       stage ('Security scanner') {
+           sh '''
+             IP=$(ip r | tail -n1 | awk '{ print $9 }')
+             /clair-scanner --ip ${IP} --clair=http://clair:6060 --threshold="Critical" DOCKER_IMAGE
+           '''
+       }
    }
 }
