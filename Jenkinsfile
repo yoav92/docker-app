@@ -37,7 +37,7 @@ node{
    }
    
    stage('Push image') {
-    docker.withRegistry('https://hub.docker.com/repository/docker/yoav92/docker-app', 'reg1') {
+    docker.withRegistry('https://hub.docker.com/repositories', 'reg1') {
       app.push() 'latest'
       app.push()
     }
