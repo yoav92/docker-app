@@ -8,7 +8,7 @@ node{
       }
 
         stage('Build image'){
-          app = docker.build("yoav92/docker-app","./simple_api")
+          app = docker.build("yoav92/docker-app:latest","./simple_api")
       }
   
   stage('Run image'){
@@ -38,7 +38,6 @@ node{
    
    stage('Push image') {
     docker.withRegistry('', 'reg1') {
-      app.push() 'latest'
       app.push()
     }
    }
