@@ -25,7 +25,7 @@ node{
     docker stop /db
         docker rm /db
     
-        docker run -p 5432:5432 -d --name db arminc/clair-db
+        docker run -d --name db arminc/clair-db
         sleep 15 # wait for db to come up
  
         docker run -p 6060:6060 --link db:postgres -d --name clair arminc/clair-local-scan:v2.0.6
