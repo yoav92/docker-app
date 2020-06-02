@@ -23,10 +23,6 @@ node{
 }
    stage("docker_scan"){
       sh '''
-        docker stop /db
-        docker rm /db
-        docker stop /clair
-        docker rm /clair
         docker network rm ci
         docker network create ci
         docker volume create --name clair-postgres
@@ -35,8 +31,7 @@ node{
         docker run --detach --name clair-postgres --publish 5432:5432 --net ci --volume clair-postgres:/var/lib/postgresql/data arminc/clair-db:latest
         docker logs --tail 1 clair-postgres 
         curl --silent https://raw.githubusercontent.com/nordri/config-files/master/clair/config-clair.yaml | sed "s/POSTGRES_NAME/clair-postgres/" > config.yaml
-        docker run --detach --name clair --net ci --publish 6060:6060 --publish 6061:6061 --volume ${PWD}/config.yaml:/config/config.yaml 
-        quay.io/coreos/clair:latest -config /config/config.yaml
+        docker run --detach --name clair --net ci --publish 6060:6060 --publish 6061:6061 --volume ${PWD}/config.yaml:/config/config.yaml quay.io/coreos/clair:latest -config /config/config.yaml
         docker run -ti --rm --name clair-scanner --net ci -v /var/run/docker.sock:/var/run/docker.sock nordri/clair-scanner:latest /bin/bash
         # export IP=$(ip r | tail -n1 | awk '{ print $9 }')
         # /clair-scanner --ip ${IP} --clair=http://clair:6060 debian:jessie
