@@ -14,7 +14,7 @@ node{
 
 
   
-}
+
    docker.image('nordri/clair-scanner').inside('--net ci') {
 
        stage ('Security scanner') {
