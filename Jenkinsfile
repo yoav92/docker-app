@@ -1,5 +1,7 @@
 node{
    def app
+   def registryProjet='hub.docker.com/repository/docker/yoav92/docker-app'
+   def image="${registryProjet}:version-${env.BUILD_ID}"
 
          stage('Clone'){
             checkout scm
@@ -32,5 +34,12 @@ node{
 
       '''
      
+   }
+   
+   stage('Push image') {
+    docker.withRegistry('https://hub.docker.com/repository/docker/yoav92/docker-app', 'reg1') {
+      app.push() 'latest'
+      app.push()
+    }
    }
 }
