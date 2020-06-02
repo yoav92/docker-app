@@ -23,7 +23,6 @@ node{
 }
    stage("docker_scan"){
       sh '''
-        docker network create ci
         docker volume create --name clair-postgres
         docker stop /clair-postgres
         docker rm /clair-postgres
