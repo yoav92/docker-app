@@ -22,8 +22,10 @@ node{
 }
    stage("docker_scan"){
       sh '''
-   
-docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock -v /lib64/libdevmapper.so.1.02:/usr/lib/x86_64-linux-gnu/libdevmapper.so.1.02 -v /lib64/libudev.so.0:/usr/lib/x86_64-linux-gnu/libudev.so.0 --privileged=true myorg/clairscan ./clair-scanner --clair="http://$myip:6060" --ip=$myip $animage
+      docker run -d --name db arminc/clair-db:latest
+      docker run -d --link db:postgres --name clair arminc/clair-local-scan:v2.0.6
+      docker run --rm  -v /var/run/docker.sock:/var/run/docker.sock --network=container:clair ovotech/clair-scanner clair-scanner alpine
+
       '''
      
    }
