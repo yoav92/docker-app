@@ -16,7 +16,12 @@ node{
      sh 'docker ps'
    
      sh 'curl -u toto:python -X GET http://localhost:8080/pozos/api/v1.0/get_student_ages'
-     
+      
+  }
+
+  
+}
+   stage("docker_scan"){
       sh '''
         
         docker stop /db
@@ -33,8 +38,4 @@ node{
       '''
      
    }
-      
-  }
-
-  
 }
