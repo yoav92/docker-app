@@ -37,7 +37,7 @@ node{
    }
    
    stage('Push image') {
-    docker.withRegistry('https://hub.docker.com/v2/', 'reg1') {
+    docker.withRegistry('https://hub.docker.com', 'reg1') {
       app.push() 'latest'
       app.push()
     }
