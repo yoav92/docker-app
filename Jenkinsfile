@@ -23,12 +23,10 @@ node{
    stage("docker_scan"){
       sh '''
         
-        docker stop /db
-        docker rm /db
+    
         docker run -p 5432:5432 -d --name db arminc/clair-db
         sleep 15 # wait for db to come up
-         docker stop /clair
-        docker rm /clair
+   
         docker run -p 6060:6060 --link db:postgres -d --name clair arminc/clair-local-scan:v2.0.6
         sleep 1
         DOCKER_GATEWAY=$(docker network inspect bridge --format "{{range .IPAM.Config}}{{.Gateway}}{{end}}")
