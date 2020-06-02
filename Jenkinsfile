@@ -22,18 +22,8 @@ node{
 }
    stage("docker_scan"){
       sh '''
-    docker stop /db
-        docker rm /db
-    
-        docker run -d --name db arminc/clair-db
-        sleep 15 # wait for db to come up
-        docker stop /clair
-        docker rm /clair
-        docker run -p 6060:6060 --link db:postgres -d --name clair arminc/clair-local-scan:v2.0.6
-        sleep 1
-        DOCKER_GATEWAY=$(docker network inspect bridge --format "{{range .IPAM.Config}}{{.Gateway}}{{end}}")
-        wget -qO clair-scanner https://github.com/arminc/clair-scanner/releases/download/v8/clair-scanner_linux_amd64 && chmod +x clair-scanner
-        ./clair-scanner --ip="$DOCKER_GATEWAY" app || exit 0
+   
+docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock -v /lib64/libdevmapper.so.1.02:/usr/lib/x86_64-linux-gnu/libdevmapper.so.1.02 -v /lib64/libudev.so.0:/usr/lib/x86_64-linux-gnu/libudev.so.0 --privileged=true myorg/clairscan ./clair-scanner --clair="http://$myip:6060" --ip=$myip $animage
       '''
      
    }
