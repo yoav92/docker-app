@@ -25,7 +25,7 @@ node{
       sh '''
         docker network rm ci
         docker network create ci
-        dokcer network rm /clair-postgres
+        docker network rm /clair-postgres
         docker volume create --name clair-postgres
         docker stop /clair-postgres
         docker rm /clair-postgres
