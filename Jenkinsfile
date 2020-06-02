@@ -25,7 +25,10 @@ node{
       sh '''
         docker network rm ci
         docker network create ci
+        dokcer network rm /clair-postgres
         docker volume create --name clair-postgres
+        docker stop /clair-postgres
+        docker rm /clair-postgres
         docker run --detach --name clair-postgres --publish 5432:5432 --net ci --volume clair-postgres:/var/lib/postgresql/data arminc/clair-db:latest
         docker logs --tail 1 clair-postgres 
         curl --silent https://raw.githubusercontent.com/nordri/config-files/master/clair/config-clair.yaml | sed "s/POSTGRES_NAME/clair-postgres/" > config.yaml
