@@ -1,5 +1,4 @@
 - name: execution 
-  hosts: 192.168.232.142
   tasks:
   - name: Docker compose
     command: docker-compose -f {{ name }}_compose.yml up -d
