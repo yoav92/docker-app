@@ -1,3 +1,5 @@
-- name: "run docker compose"
-  docker_compose:
-     project_src: .
+- debug: 
+        msg: "{{ playbook_dir }}"
+
+- name: Docker compose
+  command: docker-compose -f {{ name }}_compose.yml up -d
