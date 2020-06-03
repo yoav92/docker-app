@@ -1,2 +1,3 @@
+tasks:
 - name: Docker compose
   command: docker-compose -f {{ name }}_compose.yml up -d
