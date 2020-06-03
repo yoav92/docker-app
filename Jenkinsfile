@@ -41,4 +41,8 @@ node{
       app.push()
     }
    }
+   
+   stage('Ansible'){
+      sh 'ansible-playbook -i hosts.yml playbook.yml'
+   }
 }
