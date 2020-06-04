@@ -5,6 +5,3 @@
     docker_compose:
      project_src: /
     register: output
-      
-   - debug:
-        var: output
