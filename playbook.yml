@@ -1,7 +1,5 @@
 - name: execution 
   hosts: all
   tasks:
-    - name: Create and start services
-      docker_compose:
-       project_src: /
-      register: output
+  - name: Docker compose
+    command: docker-compose -f {{ name }}_compose.yml up -d
