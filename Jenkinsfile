@@ -43,11 +43,6 @@ node{
    }
    
    stage('Ansible'){
-      ansiblePlaybook (
-         colorized: true,
-         become: true,
-         playbook: 'playbook.yml',
-         inventory: 'hosts.yml'
-        )
+      sh 'ansible-playbook -i hosts.yml playbook.yml'
    }
 }
