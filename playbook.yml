@@ -1,5 +1,10 @@
 - name: execution 
   hosts: web
   tasks:
-  - name: Docker compose
-    command: docker-compose -f {{ name }}_compose.yml up -d
+  - name: Create and start services
+      docker_compose:
+        project_src: /
+      register: output
+      
+   - debug:
+        var: output
