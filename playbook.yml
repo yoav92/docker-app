@@ -2,9 +2,9 @@
   hosts: web
   tasks:
   - name: Create and start services
-      docker_compose:
-        project_src: /
-      register: output
+    docker_compose:
+     project_src: /
+    register: output
       
    - debug:
         var: output
