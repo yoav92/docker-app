@@ -15,7 +15,7 @@ node{
      docker.image('yoav92/docker-app:latest').withRun('-p 8080:80') { c ->
 
      sh 'docker ps'
-   
+     sh 'sleep 10'
      sh 'curl -u toto:token -X GET http://0.0.0.0:8080/pozos/api/v1.0/get_student_ages'
       
   }
