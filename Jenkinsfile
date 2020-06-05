@@ -16,7 +16,7 @@ node{
 
      sh 'docker ps'
      sh 'sleep 10'
-     sh 'curl GET http://0.0.0.0:8080/pozos/api/v1.0/get_student_ages'
+     sh 'curl -u toto:python -X GET http://192.168.232.143:8080/pozos/api/v1.0/get_student_ages'
       
   }
 
