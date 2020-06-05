@@ -12,7 +12,7 @@ node{
       }
   
   stage('Run image'){
-     docker.image('docker-app').withRun('-p 8080:80') { c ->
+     docker.image('yoav92/docker-app:latest').withRun('-p 8080:80') { c ->
 
      sh 'docker ps'
    
