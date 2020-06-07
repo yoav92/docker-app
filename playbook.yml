@@ -1,8 +1,9 @@
 - hosts: all
   
-  taks:
+  tasks:
+  
    - name: Run API
-     docker-container:
+     docker_container:
         name: 'app-service'
      docker_image:
         build:
@@ -21,7 +22,7 @@
     volumes:
           - "./website:/var/www/html"
     env:
-        USERNAME: "USERNAME"
+        USERNAME: "toto"
         PASSWORD: "python"
         
         
