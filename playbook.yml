@@ -1,8 +1,10 @@
 ---
 - name: DC
   hosts: all
+  gather_facts: no
   tasks:
     - docker_compose:
+        project_name: flask
         definition:
           version: "3.7"
           services:
