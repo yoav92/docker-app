@@ -7,7 +7,8 @@
     docker_container:
        name: 'app-service'
        docker_image:
-        build:
+         build:
+          name: yoav92/docker-app:latest
           path: ./simple_api
        volumes:
         - "./simple_api:/usr/src/app"
