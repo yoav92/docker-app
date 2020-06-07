@@ -5,8 +5,8 @@
   
   - name: Run API
     docker_image:
-         build:
-          dockerfile: ./simple_api
+      build:
+        dockerfile: ./simple_api
    
   - name: Run apache container
     docker_container:
