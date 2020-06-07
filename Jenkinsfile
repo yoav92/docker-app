@@ -46,6 +46,6 @@ node{
    }
    
    stage('Ansible'){
-      sh 'ansible-playbook -i hosts.yml playbook.yml'
+      sh 'ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i hosts.yml playbook.yml'
    }
 }
