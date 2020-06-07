@@ -3,4 +3,4 @@
   tasks:
     - name: Run DC
       docker_compose:
-         projet_src: /
+         project_src: /
