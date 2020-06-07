@@ -1,3 +1,29 @@
-- name: run the service defined in my_project's docker-compose.yml
-  docker_compose:
-    project_src: docker-compose.yml
+- hosts: all
+  
+  taks:
+   - name: Run API
+     docker-container:
+        name: 'app-service'
+     docker_image:
+        build:
+          path: ./sample_api
+     volumes:
+          - "./simple_api:/usr/src/app"
+     published_ports:
+          - "5001:5000"
+  
+  - name: Run apache container
+    docker_container:
+    name: 'website'
+    image: 'php:apache'
+    published_ports:
+          - "5000:80"
+    volumes:
+          - "./website:/var/www/html"
+    env:
+        USERNAME: "USERNAME"
+        PASSWORD: "python"
+        
+        
+   
+   
