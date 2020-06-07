@@ -19,7 +19,7 @@ node{
      sh 'docker rm /dd-agent'
      sh 'DOCKER_CONTENT_TRUST=1 docker run -d --name dd-agent -v /var/run/docker.sock:/var/run/docker.sock:ro -v /proc/:/host/proc/:ro -v /sys/fs/cgroup/:/host/sys/fs/cgroup:ro -e DD_API_KEY=10a831fb7407aaab13c6d273af0a06ef datadog/agent:7'
      sh 'sleep 10'
-     sh 'curl -u toto:python -X GET http://0.0.0.0:8080/pozos/api/v1.0/get_student_ages'
+     sh 'curl -u toto:python -X GET http://f4e50fc489d9:80/pozos/api/v1.0/get_student_ages'
       
   }
 
