@@ -16,15 +16,15 @@
   
   - name: Run apache container
       docker_container:
-      name: 'website'
-      image: 'php:apache'
-      published_ports:
-        - "5000:80"
-      volumes:
-        - "./website:/var/www/html"
-      env:
-        USERNAME: "toto"
-        PASSWORD: "python"
+        name: 'website'
+        image: 'php:apache'
+        published_ports:
+          - "5000:80"
+        volumes:
+          - "./website:/var/www/html"
+        env:
+          USERNAME: "toto"
+          PASSWORD: "python"
 
         
    
