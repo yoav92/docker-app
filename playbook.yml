@@ -1,24 +1,10 @@
 ---
-- hosts: all
-  
+- name: DC
+  hosts: all
   tasks:
-  
-  - name: Run API
-    docker_image:
-      build:
-        dockerfile: ./simple_api
-   
-  - name: Run apache container
-    docker_container:
-       name: 'website'
-       image: 'php:apache'
-       published_ports:
-         - "5000:80"
-       volumes:
-         - "./website:/var/www/html"
-       env:
-         USERNAME: "toto"
-         PASSWORD: "python"
+    - name: Run service
+      docker_compose:
+        project_src: /
 
         
    
