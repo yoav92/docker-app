@@ -1,34 +1,26 @@
 ---
-- name: DC
-  hosts: all
-  gather_facts: no
+- hosts: all
+  
   tasks:
-    - docker_compose:
-        project_name: flask
-        definition:
-          version: "3.7"
-          services:
-            website:
-              image: php:apache
-              environment:
-                - USERNAME=toto
-                - PASSWORD=python 
-              volumes:
-                - ./website:/var/www/html
-              ports:
-               - 5000:80
-              depends_on:
-                - app-service
-
-
-            app-service:
-              build:
-               context: simple_api
-               dockerfile: Dockerfile
-              volumes:
-               - ./simple_api:/usr/src/app
-              ports:
-               - 5001:5000
+  
+  - name: Run apache container
+    docker_container:
+       name: 'website'
+       image: 'php:apache'
+       published_ports:
+         - "5000:80"
+       volumes:
+         - "./website:/var/www/html"
+       env:
+         USERNAME: "toto"
+         PASSWORD: "python"
+  
+  - name: Run API
+    docker_image:
+      build:
+        dockerfile: ./simple_api
+   
+  
 
 
 
