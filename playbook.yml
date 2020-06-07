@@ -3,6 +3,15 @@
   
   tasks:
   
+  - name: Run API
+    docker_container:
+      name: 'app-service'
+      image: 'yoav92/docker-app:latest'
+      published_ports:
+         - "5001:5000"
+      volumes:
+        - ./simple_api:/usr/src/app
+  
   - name: Run apache container
     docker_container:
        name: 'website'
@@ -15,10 +24,7 @@
          USERNAME: "toto"
          PASSWORD: "python"
   
-  - name: Run API
-    docker_image:
-      build:
-        dockerfile: ./simple_api
+ 
    
   
 
