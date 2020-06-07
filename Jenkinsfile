@@ -50,9 +50,6 @@ node{
    }
    
    stage('Scanning') {
-         steps {
             arachniScanner checks: '*', scope: [pageLimit: 3], url: 'http://192.168.232.142:5000', userConfig: [filename: 'myConfiguration.json'], format: 'json'
-         }
-   
     }
 }
