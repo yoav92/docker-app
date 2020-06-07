@@ -5,14 +5,8 @@
   
   - name: Run API
     docker_image:
-         name: yoav92/docker-app:latest
          build:
-          path: ./simple_api
-          args:
-            log_volume: ./simple_api:/usr/src/app
-            listen_port: 5001
-         source: build
-         
+          dockerfile: ./simple_api
    
   - name: Run apache container
     docker_container:
