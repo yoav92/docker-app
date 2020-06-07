@@ -4,17 +4,16 @@
   tasks:
   
   - name: Run API
-    docker_container:
-       name: 'app-service'
-       docker_image:
+    docker_image:
          name: yoav92/docker-app:latest
          build:
           path: ./simple_api
-       volumes:
-        - "./simple_api:/usr/src/app"
-       published_ports:
-        - "5001:5000"
-  
+          args:
+            log_volume: ./simple_api:/usr/src/app
+            listen_port: 5001
+         source: build
+         
+   
   - name: Run apache container
     docker_container:
        name: 'website'
