@@ -46,6 +46,6 @@ node{
    }
    
    stage('Ansible'){
-      sh 'ansible-playbook -i /etc/ansible/hosts playbook.yml'
+      sh 'ansible-playbook playbook.yml'
    }
 }
