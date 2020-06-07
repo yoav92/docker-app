@@ -9,6 +9,8 @@
       image: 'yoav92/docker-app:latest'
       published_ports:
          - "5001:5000"
+      volumes:
+         - "./simple_api:/usr/src/app"
   
   - name: Run apache container
     docker_container:
