@@ -8,7 +8,7 @@
        name: 'app-service'
        docker_image:
         build:
-          path: ./sample_api
+          path: ./simple_api
        volumes:
         - "./simple_api:/usr/src/app"
        published_ports:
