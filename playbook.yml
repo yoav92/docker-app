@@ -1,6 +1,4 @@
 - name: execution 
   hosts: all
-  tasks:
-    - name: Run DC
-      docker_compose:
-         project_src: /
+  docker_compose:
+     project_src: /
