@@ -1,4 +1,8 @@
-- name: execution 
+- name: DC
   hosts: all
-  docker_compose:
-     project_src: /
+  gather_facts: no
+  tasks:
+    - debug: 
+        msg: "{{ playbook_dir }}"
+    - name: Docker compose
+      command: docker-compose -f {{ name }}_compose.yml up -d
