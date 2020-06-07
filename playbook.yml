@@ -1,5 +1,4 @@
 - name: execution 
   hosts: all
-  tasks:
-  - name: Docker compose
-    command: docker-compose -f {{ name }}_compose.yml up -d
+  docker_compose:
+    porjet_src: /
